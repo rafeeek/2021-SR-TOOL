@@ -1,0 +1,731 @@
+<html>
+    <head>
+        <title>2021 SR TOOL</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/fontawesome.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link id="refo" rel="stylesheet" href="css/index_style.css">
+    </head>
+    <body>
+
+
+
+        <!-- header -->
+        <div class="container ">
+            <div class="header row p-2 mt-2 bg-light">
+                <div class="col-md-4">
+                    <div class="input-group input-group-sm w-75">
+                        <div class="input-group-prepend">
+                        </div>
+                        <input type="number" class="form-control rounded" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="CSTNumber" onkeypress="return event.which != 13;" autofocus maxlength="9" placeholder="Number">
+                        <button onclick="SetFocus()" type="clear" class="btn btn-outline-success btn-sm ml-2">Rest</button>
+                    </div>
+                </div>
+                <div class="col-md-7 offset-1">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group input-group-sm ">
+                                <div class="input-group-prepend">
+                                </div>
+                                <input placeholder="BSS Quota" onkeypress="CalQuotaEnter();" id="BESQuota" maxlength="18" type="text" class="form-control rounded" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                <button onclick="CalQuota()" class="btn  btn-outline-primary btn-sm ml-2">Cal</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group input-group-sm ">
+                                <div class="input-group-prepend">  
+                                </div>
+                                <input  id="CSTQuota" value="" placeholder="Ruselt" type="text" class="form-control rounded" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Reselut" >
+                                <button onclick="ResetCal()"  class="btn btn-outline-success btn-sm ml-2">Rest</button>
+                                <input class="ml-4 mr-2" type="checkbox" id="followup"><p>comment</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="darkmode">
+            <i class="fas fa-moon fa-lg"></i>
+        </div>
+
+        <div class="blackbox1 ">
+            <div class="darkpanal bg-light p-4">
+                <h5>Dark Mode</h5>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" onclick="lightstyle()" id="radiosoff" value="option1" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                      OFF
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" onclick="darkstyle()" id="radioson" value="option2">
+                    <label class="form-check-label" for="exampleRadios2">
+                      ON
+                    </label>
+                  </div>
+            </div>
+        </div>
+        
+        <!-- end header -->
+
+
+        <!-- admin panal -->
+        <div class="panalbtnre">
+            <button  class="btn btn-secondary btn-sm mr-2 mb-2 admin" id="adminbtnHID">H</button>
+            <button  class="btn btn-secondary btn-sm mr-2 mb-2 admin1" id="adminbtnSHO">S</button>
+        </div>
+        <div class="container adminpanal bg-light allbo py-4 hide" id="adminpanal">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h5>add new sr only for admin</h5>
+                    <div class="input-group input-group-sm mb-3 mt-5">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroup-sizing-sm">name of sr</span>
+                        </div>
+                        <input id="nameofsr" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                      </div>
+                      <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroup-sizing-sm">funct</span>
+                        </div>
+                        <input id="onclick1" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                      </div>
+                      <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroup-sizing-sm">website</span>
+                        </div>
+                        <input id="website" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                      </div>
+                      <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroup-sizing-sm">tree</span>
+                        </div>
+                        <input id="tree" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                      </div>
+                      <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroup-sizing-sm">lasttree</span>
+                        </div>
+                        <input id="lasttree" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                      </div>
+                      <button onclick="srdata()"  class="btn btn-secondary btn-sm mr-2 mb-2">ADD SR</button>                    
+                      <div class="divtoshow"></div>
+                    </div>
+            </div>
+        </div>
+        <!-- end admin panal -->
+
+
+        <!-- blackbox btn -->
+        <div class="allpackegebtn  bg-light" title="package details">
+            <i class="fas fa-bars fa-lg"></i>
+        </div>
+        <!-- end blackbox btn -->
+
+
+        <!-- blackbox -->
+        <div class="blackbox hide" id="blackbox">
+            <div class="container text-center allpackege bg-light py-4">
+                <div class="row">
+                    <div class="col-md-10 mx-auto bg-light allbo p-3">
+                        <h5 class="mb-3" >Package Details</h5>
+                        <form>
+                            <div>
+                              Addon Packages :
+                              <input class="ml-1" type="checkbox" value="30" name="addon-pkg" />
+                              <label class="pr-3" for="">Top Up 20</label>
+              
+                              <input type="checkbox" value="60" name="addon-pkg" />
+                              <label class="pr-3" for="">Top Up 50</label>
+              
+                              <input type="checkbox" value="100" name="addon-pkg" />
+                              <label class="pr-3" for="">Top Up 100</label>
+              
+                              <input type="checkbox" value="75" name="addon-pkg" />
+                              <label class="pr-3" for="">PS 150</label>
+              
+                              <input type="checkbox" value="150" name="addon-pkg" />
+                              <label class="pr-3" for="">PS 300</label>
+              
+                              <input type="checkbox" value="10" name="addon-pkg" />
+                              <label class="pr-3" for="">OP 1</label>
+              
+                              <input type="checkbox" value="50" name="addon-pkg" />
+                              <label class="pr-3" for="">OP 2</label>
+              
+                              <input type="checkbox" value="100" name="addon-pkg" />
+                              <label class="pr-3" for="">OP 3</label>
+                            </div>
+                            <hr />
+                            Packages:
+                            <select id="pkg">
+                              <option value="75">Super 30</option>
+                              <option value="110">Super 100</option>
+                              <option value="120">Super 140</option>
+                              <option value="170">Super 200</option>
+                              <option value="210">Super 250</option>
+                              <option value="500">Super 600</option>
+                              <option value="220">Mega 140</option>
+                              <option value="310">Mega 250</option>
+                              <option value="320">Ultra 140</option>
+                              <option value="410">Ultra 250</option>
+                              <option value="700">Ultra 600</option>
+                              <option value="1000">Max 1000</option>
+                            </select>
+                            <input id="cpe" type="checkbox" />CPE
+                            <input class="ml-2" id="slf" type="checkbox" />Salfny
+                            <input
+                              type="text"
+                              id="Client-Balance"
+                              value="0"
+                              style="width:50px;"
+                            />
+                            Client Balance
+                            <hr />
+                            <label for="">Without Tax : </label>
+                            <input
+                              type="text"
+                              id="PKGPriceNoTax"
+                              value="0"
+                              style="width:50px;"
+                              readonly
+                            />
+                            <label for="">Total : </label>
+                            <input  type="text" id="PKGPrice" value="0" style="width:50px;" readonly/>LE
+                            <button type="button" onclick="CalPrice()" class="btn btn-outline-primary btn-sm ml-2">Calculate</button>
+                            <button type="reset" value="Reset"  class="btn  btn-outline-success btn-sm ml-2">Reset</button>
+                          </form>
+                    </div>
+                    <div class="col-md-10 bg-light allbo p-4 mx-auto mt-3">
+                        <h5 class="mb-3" >App</h5>
+                        <a href="https://wiki/SiteAssets/WIKI%20Main%20Page/Sales-ADSL%20BSS.html" target="_blank"><button  class="btn btn-outline-primary btn-sm">WIKI</button></a>
+                        <a href="https://wiki/SiteAssets/mini_tools/new_usage_tool.html" target="_blank"><button  class="btn btn-outline-primary btn-sm">Usage Tool</button></a>
+                        <a href="https://teleopti.tedata.net/teleoptiwfm/" target="_blank"><button  class="btn btn-outline-primary btn-sm">Teleopti</button></a>
+                        <a href="https://10.20.101.222:12900/oc/bes/sm/login/operator_ctz.html?timestamp=1583336763456" target="_blank"><button  class="btn btn-outline-primary btn-sm">BSS</button></a>
+                        <a href="http://10.19.5.17/Default.aspx" target="_blank"><button  class="btn btn-outline-primary btn-sm">​OSS</button></a>
+                        <a href="http://orders/supporter/index.php?t=tMsrc" target="_blank"><button  class="btn btn-outline-primary btn-sm">Orders</button></a>
+                        <a href="http://matrix/cc_telbesearch.php" target="_blank"><button  class="btn btn-outline-primary btn-sm">MatriX</button></a>
+                        <a href="http://tts/" target="_blank"><button  class="btn btn-outline-primary btn-sm">TTS</button></a>
+                        <a href="http://billing/security/login.jsp" target="_blank"><button  class="btn btn-outline-primary btn-sm">Simba</button></a>
+                        <a href="http://customer360/Customers/0" target="_blank"><button  class="btn btn-outline-primary btn-sm">CST360</button></a>
+                        <a href="https://wiki/SiteAssets/IVR/index.html" target="_blank"><button  class="btn btn-outline-primary btn-sm">IVR</button></a>
+                        <a href="https://mail.xceedcc.com/owa/#path=/mail" target="_blank"><button  class="btn btn-outline-primary btn-sm">Mail</button></a>
+                        <a href="https://10.42.187.100:8080/expresse/login-page" target="_blank"><button  class="btn btn-outline-primary btn-sm">Assia</button></a>
+                        <a href="http://hrapplications.intranet.masreya.local/PaySlip.aspx" target="_blank"><button  class="btn btn-outline-primary btn-sm">PaySlip</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end blackbox -->
+
+
+        <!-- most use -->
+        <div class="container bg-light allbo rounded mt-3 py-4 text-center" id="mostuse">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="btn-group">
+                        <button href="https://www.facebook.com/"  class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Susp Not pay
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="BillingIssue1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2" >Susp Complaint</button></li>
+                            <li><button onclick="BillingIssue()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Susp Inquiry</button></li>
+                            <li><button onclick="Issue6()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Life cycle</button></li>
+                            <li><button onclick="Issue4()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Balance Transfer</button></li>
+                            <li><button onclick="Issue9()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Susp TE bill</button></li>
+                            <li><button onclick="Issue1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Balance?</button></li>
+                            <li><button onclick="Issue2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Bill-Amount</button></li>
+                            <li><button onclick="Issue5()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Landline-Bills</button></li>
+                            <li><button onclick="Issue3()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Pay-Methods</button></li>
+                        </div>
+                      </div>
+                      
+                    <div class="btn-group">
+                        <button href="https://www.amazon.ae/ref=nav_logo" class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Early Renewal
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="Early_Renewal_done()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Renewal done</button></li>
+                             <li><button onclick="Ask_to_Renew_Without()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Renewal not done</button></li>
+                             <li><button onclick="Renewaldate()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Renewal date??</button></li>
+                        </div>
+                      </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Extra Quota
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="ExtraQuota1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Quota Onetime</button></li>
+                            <li><button onclick="Extra1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Autorenewal Inquiry</button></li>
+                            <li><button onclick="Extra_Quota()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Autorenewal Add</button></li>
+                            <li><button onclick="Extra2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Autorenewal cancel</button></li>
+                            <li><button onclick="Level_Up()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">LevelUp Inquiry</button></li>
+                            <li><button onclick="Level_Up1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">LevelUp Add</button></li>
+                            <li><button onclick="Level_Up2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">LevelUp Remove</button></li>
+                        </div>
+                      </div>
+
+                      <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Salfny
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="Salfny_not()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Salfny Inquiry</button></li>
+                            <li><button onclick="Salfny()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Salfny Add</button></li>
+                        </div>
+                      </div>
+
+                      <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Fraction
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="Issue8()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Fraction eligible</button></li>
+                            <li><button onclick="Issue0()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Not eligible</button></li>
+                        </div>
+                      </div>
+
+                      <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Recharge by mistake
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="Recharge_by_mistake()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Recharge TT</button></li>
+                            <li><button onclick="online3()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Follow WithinSLA</button></li>
+                            <li><button onclick="online4()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Follow AfterSLA</button></li>
+                            <li><button onclick="online5()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Recharge Telephonet</button></li>
+                        </div>
+                      </div>
+
+                      <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Complaint
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="Asked_for_Complaint()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Ask to Complaint</button></li>
+                            <li><button onclick="Asked_to_call_manager()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Ask call manager</button></li>
+                            <li><button onclick="ATCM_ON_spot()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Manager ON-spot</button></li>
+                        </div>
+                      </div>
+
+                      <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Transfer
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="Technical1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Fixed-line</button></li>
+                            <li><button onclick="Technical0()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Telephonet</button></li>
+                            <li><button onclick="Technical2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">GSM Postpaid</button></li>
+                            <li><button onclick="Technical3()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">GSM Prepaid</button></li>
+                            <li><button onclick="Technical4()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">FTTH</button></li>
+                            <li><button onclick="Technical5()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Retention</button></li>
+                        </div>
+                      </div>
+
+                      <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Transfer TO Tech
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="Technical()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Inter not work</button></li>
+                        <li><button onclick="Technical6()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Inter work slow</button></li>
+                        <li><button onclick="Technical7()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">work but unstable</button></li>
+                        <li><button onclick="Technical8()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">voice down</button></li>
+                        <li><button onclick="Technical9()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">wireless problem</button></li>
+                        <li><button onclick="Technical10()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">voice overlapping</button></li>
+                        <li><button onclick="Technical11()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">port/access denied</button></li>
+                        <li><button onclick="Technical12()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">access point</button></li>
+                        <li><button onclick="Technical13()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">repeater</button></li>
+                        <li><button onclick="Technical14()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">speed variance</button></li>
+                        <li><button onclick="Technical15()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">wrong profile matrix</button></li>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-md-12 mt-2">
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            App & E-care
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="WeApp()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">My-We</button></li>
+                            <li><button onclick="Ecare()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">E-Care</button></li>
+                        </div>
+                      </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Change offering	
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="Change_offer()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Inquiry</button></li>
+                            <li><button onclick="Change_offering()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Change-Done</button></li>
+                        </div>
+                      </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Change Data	
+                        </button>
+                        <div class="dropdown-menu text-center">
+                        <li><button onclick="ChangeData()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">From 111</button></li>
+                        <li><button onclick="ChangeData4()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Branch</button></li>
+                        <li><button onclick="ChangeData1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Before-Installed</button></li>
+                        </div>
+                      </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Paid Through	
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="Paid_Through_Fawry()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Fawry</button></li>
+                            <li><button onclick="Through1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Aman</button></li>
+                            <li><button onclick="Through2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Momken</button></li>
+                            <li><button onclick="Through3()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Sadad</button></li>
+                            <li><button onclick="Through4()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Masary</button></li>
+                            <li><button onclick="Through5()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Bee</button></li>
+                            <li><button onclick="Through6()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Online</button></li>
+                            <li><button onclick="Through7()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Branches</button></li>
+                            <li><button onclick="online1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Within-SLA</button></li>
+                            <li><button onclick="online2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">After-SLA</button></li>
+                        </div>
+                      </div>
+
+                      <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Pay Not Clear
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="online_Pay_issue()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">App-Ecare-TT</button></li>
+                            <li><button onclick="online_Pay_issue1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Online Deduction</button></li>
+                            <li><button onclick="NotClear()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Aggregators-TT</button></li>
+                            <li><button onclick="online1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Within-SLA</button></li>
+                            <li><button onclick="online2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">After-SLA</button></li>
+                        </div>
+                      </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Concession	
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="DataDown_()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Data Down</button></li>
+                            <li><button onclick="PhysicalInstability_BLQ_()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Physical Insta BLQ</button></li>
+                            <li><button onclick="GlobalProblem_()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Global Problem</button></li>
+                            <li><button onclick="Browsing_UnabletoObtainIP_()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Browsing Obtain IP</button></li>
+                            <li><button onclick="LogicalInstability_()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Logical Instability</button></li>
+                            <li><button onclick="WrongProfile_()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Wrong Profile</button></li>
+                            <li><button onclick="AnyVoiceCase_()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Any Voice Case</button></li>
+                            <li><button onclick="WrongCard_Port_()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Wrong Card Port</button></li>
+                            <li><button onclick="Slowness_Utilization_()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Slowness Utilization</button></li>
+                        </div>
+                      </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Follow Concession	
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="Follow_concession()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Follow WithinSLA</button></li>
+                            <li><button onclick="Concession_Delay()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Follow AfterSLA</button></li>
+                        </div>
+                      </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Concession Approv&Dis	
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="Approved1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Concession Approved</button></li>
+                            <li><button onclick="Approved2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">TT Complaint</button></li>
+                            <li><button onclick="Disapproved()"  class="btn btn-outline-danger btn-sm mr-2 mb-2">**Disapproved**</button></li>
+                            <li><button onclick="Disapproved1()"  class="btn btn-outline-danger btn-sm mr-2 mb-2">Without complaint</button></li>
+                            <li><button onclick="Disapproved2()"  class="btn btn-outline-danger btn-sm mr-2 mb-2">Need complaint</button></li>
+                        </div>
+                      </div>
+
+
+                </div>
+                <div class="col-md-12 mt-2">
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Matrix
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="Disabled_matrix()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Disabled-matrix</button></li>
+                            <li><button onclick="Blocked_matrix()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Blocked-matrix</button></li>
+                        </div>
+                      </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Usage Quota
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="Usage_Quota()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Basic-Quota</button></li>
+                            <li><button onclick="Usage_Quota1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Extra-Quota</button></li><li>
+                            <button onclick="Usage_Quota2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Add-ons</button></li>
+                            <li><button onclick="Throttling()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Throttling</button></li>
+                        </div>
+                      </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Consumption
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="Consumption1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Main package</button></li>
+                            <li><button onclick="Consumption2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Extra Quota</button></li>
+                            <li><button onclick="Consumption3()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Priority</button></li>
+                        </div>
+                      </div>
+                      
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            CPE & Repeater
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="CPE()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">CPE</button></li>
+                            <li><button onclick="CPE2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Repeater</button></li>
+                            <li><button onclick="CPE3()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Test CPE</button></li>
+                        </div>
+                      </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            OptionPack & Family Filter
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="Option_Pack()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Option_Pack</button></li>
+                            <li><button onclick="Family1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Cancel WithinSL</button></li>
+                            <li><button onclick="Family3()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Cancel AfterSL</button></li>
+                            <li><button onclick="Family_Filter()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Family Filter</button></li>
+                            <li><button onclick="Family1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Cancel WithinSL</button></li>
+                            <li><button onclick="Family3()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Cancel AfterSL</button></li>
+                        </div>
+                      </div>
+
+                      <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Outage
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="Outage1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">within SLA</button></li>
+                            <li><button onclick="Outage2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">After-SLA</button></li>
+                        </div>
+                      </div>
+
+                      <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Offer & Campaigns
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="Other_offer()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Other offer</button></li>
+                            <li><button type="button" onclick="Rama_dan()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Ramadan</button></li>
+                            <li><button onclick="Watch_it()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Watch it</button></li>
+                        </div>
+                      </div>
+
+                      <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Individual cases
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="Individual4()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Matrix Blocked</button></li>
+                            <li><button onclick="Individual5()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Matrix Disabled</button></li>
+                            <li><button onclick="Individual6()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Usage Complaint</button></li>
+                            <li><button onclick="Individual10()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Processing</button></li>
+                            <li><button onclick="Individual7()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Life Cycle Arrears</button></li>
+                            <li><button onclick="Individual8()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Suspended Offer</button></li>
+                            <li><button onclick="Individual9()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">No Free Resource</button></li>
+                            <li><button onclick="Individual11()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Abnormal Status</button></li>
+                            <li><button onclick="Individual12()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">App Problem</button></li>
+                            <li><button onclick="Individual3()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Promotion-TT</button></li>
+                            <li><button onclick="Individual1()"  class="btn btn-outline-danger btn-sm mr-2 mb-2">Follow WithinSLA</button></li>
+                            <li><button onclick="Individual2()"  class="btn btn-outline-danger btn-sm mr-2 mb-2">Follow AfterSLA</button></li>
+                        </div>
+                      </div>
+                      
+
+
+                </div>
+                <div class="col-md-12 mt-2">
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            MSAN
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="MSAN_TT()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">MSAN TT</button></li>
+                            <li><button onclick="MSAN_TT1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Inquiry</button></li>
+                            <li><button onclick="MSAN_TT2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Complaint</button></li>
+                            <li><button onclick="MSAN_TT3()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Follow withinSLA</button></li>
+                            <li><button onclick="MSAN_TT4()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Follow AfterSLA</button></li>
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Change Number
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="Change_Number()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Change Number</button></li>
+                        <li><button onclick="Number1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Follow WithinSLA</button></li>
+                        <li><button onclick="Number2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Follow AfterSLA</button></li>
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Voucher
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="Voucher1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Voucher recharge</button></li>
+                            <li><button onclick="Voucher3()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Loyalty Voucher</button></li>
+                            <li><button onclick="Voucher4()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Voucher complaint</button></li>
+                            <li><button onclick="Voucher2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Blackl ist</button></li>
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            WE space
+                        </button>
+                        <div class="dropdown-menu text-center">
+                            <li><button onclick="PackageDetails()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Package Details</button></li>
+                            <li><button onclick="PackageDetails1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Need More package</button></li>    
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-sm dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            ALL SMS
+                        </button>
+                        <div class="dropdown-menu text-center">
+                        <li><button onclick="dro()"  class="btn btn-outline-danger btn-sm mr-2 mb-2">*Activation Code*</button></li>
+                        <li><button onclick="Code1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Inquiry</button></li>
+                        <li><button onclick="Code2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Complaint</button></li>
+                        <li><button onclick="dro()"  class="btn btn-outline-danger btn-sm mr-2 mb-2">*Consumption*</button></li>
+                        <li><button onclick="Code3()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Inquiry</button></li>
+                        <li><button onclick="Code4()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Complaint</button></li>
+                        <li><button onclick="dro()"  class="btn btn-outline-danger btn-sm mr-2 mb-2">*SMS-Renewal*</button></li>
+                        <li><button onclick="Renewal1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Inquiry</button></li>
+                        <li><button onclick="Renewal2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Complaint</button></li>    
+                        </div>
+                    </div>
+
+
+                      
+                </div>
+            </div>
+            <button onclick="textdir()"  class="btn btn-outline-success btn-sm mr-2 mb-2 textdirec" id="textdirec" >Left</button>
+        </div>
+
+        <!-- end most use -->
+
+
+        <!-- Search all sr and tt -->
+        <div class="container py-4 allbo px-5  my-3 bg-light">
+            <div class="row  px-2">
+
+                <div class="col-md-12 mb-4">
+                    <div class="input-group input-group-sm w-50 mx-auto">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroup-sizing-sm"><i class="fas fa-search"></i></span>
+                        </div>
+                        <input  placeholder="Search For SR" id="myInput" onkeyup="myFunction(this.value)" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                </div>
+                            
+
+
+                <div class="col-md-12 p-0 m-0 " id="alltoshow">
+                    <ul id="myUL" class="myUL">
+                        <li><button onclick="Telephonet_Inquiry()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Telephonet Inquiry</button></li>
+                        <li><button onclick="Telephonet_Inquiry1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Telephonet Bill</button></li>
+                        <li><button onclick="Telephonet1()"  class=" btn btn-outline-primary btn-sm mr-2 mb-2">Telephonet Non-payment</button></li>
+                        <li><button onclick="Telephonet_Complaints()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Telephonet Complaints TT</button></li>
+                        <li><button onclick="Tele_Change_Package()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Telephonet Change Package TT</button></li>
+                        <li><button onclick="Telephonet_Other1()"  class=" btn btn-outline-primary btn-sm mr-2 mb-2">Telephonet Others-TT</button></li>
+                        <li><button onclick="Telephonet_Other2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Telephonet reconnect-TT</button></li>
+                        <li><button onclick="Telephonet_Other3()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Telephonet Susp-Reason-TT</button></li>
+                        <li><button onclick="Pending_Posting_TE()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Follow Instllation WithinSLA</button></li>
+                        <li><button onclick="Pending_TE()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Follow Instllation AfterSLA</button></li>
+                        <li><button onclick="Root_Operator()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Root Operator</button></li>
+                        <li><button onclick="online3()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Root WithinSLA</button></li>
+                        <li><button onclick="online4()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Root AfterSLA</button></li>
+                        <li><button onclick="CPEUser_Password()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Service Username</button></li>
+                        <li><button onclick="CPEUser_Password1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Router Username</button></li>
+                        <li><button onclick="delayPendingTE()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Delay PendingTE</button></li>
+                        <li><button onclick="TE_Problem1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">TE Problem SR</button></li>
+                        <li><button onclick="TE_Problem()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">TE Problem DelayTT</button></li>
+                        <li><button onclick="TE_Problem3()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">TE Problem Solved DelayTT</button></li>
+                        <li><button onclick="TE_Problem2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">TE Problem Can't be Solved</button></li>
+                        <li><button onclick="Ask_for_Cancellation()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Ask for Cancellation</button></li>
+                        <li><button onclick="Ask_for_Cancellation1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Cancellation before installed</button></li>
+                        <li><button onclick="Ask_for_Suspension()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Ask for Suspension</button></li>
+                        <li><button onclick="Customer_problem()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Customer problem SR</button></li>
+                        <li><button onclick="Cust_Pro_Solved()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Customer problem Solved Delay TT</button></li>
+                        <li><button onclick="Customer_Problem1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Customer problem Other ISP</button></li>
+                        <li><button onclick="DowngradedByMistake()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Downgraded By Mistake</button></li>
+                        <li><button onclick="Sales_Leads()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Sales Leads</button></li>
+                        <li><button onclick="Indigo_Inquiry()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Indigo Inquiry</button></li>
+                        <li><button onclick="Indigo_Plus_Inquiry()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Indigo Plus Inquiry</button></li>
+                        <li><button onclick="Indigo_Inquiry1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Indigo Susp-Nonpay</button></li>
+                        <li><button onclick="Bills_Debts()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Indigo Bills Debts TT</button></li>
+                        <li><button onclick="online3()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Indigo Bills Debts TT WithinSLA</button></li>
+                        <li><button onclick="online4()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Indigo Bills Debts TT AfterSLA</button></li>
+                        <li><button onclick="Splitting_Del()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Pending splitting SR</button></li>
+                        <li><button onclick="Splitting_Delay()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Pending splitting Delay</button></li>
+                        <li><button onclick="Splitting_Del1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Pop problem SR</button></li>
+                        <li><button onclick="General1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">call by mistake</button></li>
+                        <li><button onclick="General2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">General info</button></li>
+                        <li><button onclick="Branches()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Branches Working hours and Address</button></li>
+                        <li><button onclick="Automatic_Configuration1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Pending Installation SR</button></li>
+                        <li><button onclick="Automatic_Configuration2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Pending Installation Delay TT</button></li>
+                        <li><button onclick="Automatic_Configuration3()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Pending Installation Delay on SR</button></li>
+                        <li><button onclick="TE_problem_Solved()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Pending Installation Inquiry SMS</button></li>
+                        <li><button onclick="Automatic_Configuration()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Pending Installation Complaint SMS</button></li>                                          
+                        <li><button onclick="postpaid1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Postpaid Inquiry</button></li>
+                        <li><button onclick="postpaid2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Postpaid-bill</button></li>
+                        <li><button onclick="postpaid3()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Postpaid TO pripaid</button></li>
+                        <li><button onclick="Activation_follow_up()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Activation follow up</button></li>
+                        <li><button onclick="Change_package1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Change package</button></li>
+                        <li><button onclick="Contracting1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Contracting Done</button></li>
+                        <li><button onclick="Contracting2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Contracting Not Done</button></li>
+                        <li><button onclick="Contact_Us1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Contact Channel</button></li>
+                        <li><button onclick="Contact_Us2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Contact Call Price</button></li>
+                        <li><button onclick="Contact_Us3()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Contact Working hours</button></li>
+                        <li><button onclick="Contact_Us4()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Contact Complaint NTRA</button></li>
+                        <li><button onclick="Installed()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Installed</button></li>
+                        <li><button onclick="Enable_by_mistake()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Enable by mistake</button></li>
+                        <li><button onclick="mistake1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Enable by mistake WithinSLA</button></li>
+                        <li><button onclick="mistake2()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Enable by mistake AfterSLA</button></li>
+                        <li><button onclick="Call_drop()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Call drop</button></li>
+                        <li><button onclick="drop1()"  class="btn btn-outline-primary btn-sm mr-2 mb-2">Call drop Complaint</button></li>
+
+                    </ul>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!-- Search end all sr and tt -->
+
+
+
+
+
+
+
+ <script src="js/jquery-3.5.1.js"></script>
+ <script src="js/popper.min.js"></script>
+ <script src="js/bootstrap.min.js"></script>
+ <script src="js/all.min.js"> </script>
+ <script src="js/app.js"></script>
+ <script src="js/main.js"> </script>
+    </body>
+</html>

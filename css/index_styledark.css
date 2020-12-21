@@ -1,0 +1,49 @@
+body {font-family: 'Josefin Sans', sans-serif;color: #cfcfcf;background-color: #18191A;}
+input{background-color: #18191A !important; color: #fff !important;}
+.btn-primary{color: #fff;     background-color: #343a40;    border-color: #343a40;}
+.dropdown-menu{background-color: #343a40 ;}
+select , span {background-color: #474949 !important;color: #fff !important;}
+.btn-outline-primary{background-color: #343a406c; border-color: #535353; color: #fff;  }
+.bg-light{background-color: #242526 !important;}
+.header{border-radius: 10px;}
+.allbo{border-radius: 10px;}
+.adminpanal{position: absolute; z-index: 22; left: 8%;top: 1%;}
+.admin{position: absolute; left: 1%; top: 2%;}
+.admin1{position: absolute; left: 1%; top: 8%;}
+.show{display: inline;}
+.hide{display: none;}
+p{font-size: 13px;margin-bottom: 0; padding: 0;}
+li{list-style: none; padding: 0; margin: 0;display:inline-block;}
+ul{list-style: none; padding: 0; margin: 0;}
+.allpackegebtn {position: fixed; z-index: 50; transition: all 1s ; cursor: pointer; width: 45px; height: 45px; border-radius: 50%;bottom: 2%;left: 1%;box-shadow: 2px 2px 20px #414141;display: flex;justify-content: center;align-items: center;background-color: #18191A !important;}
+.allpackegebtn:hover {color: #0584a3;border: 1px solid #0584a3;}
+.blackbox{background-color: #969696af;width: 100%;height: 100vh;top: 0;position: fixed;z-index: 33;}
+.blackbox1{background-color: #ffffff00;width: 100%;height: 100vh;top: 0;position: fixed;z-index: 10;}
+.allpackege{position: fixed;bottom: 3%;z-index: 22;left: 7.9%;border-radius: 10px;background-color: #18191A !important;}
+.allpackege::before
+{
+    content: "";
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: -0.5%;
+    bottom: 3%;
+    background-color: #18191A;
+    transform: rotate(45deg);
+}
+#mostuse{position: relative;}
+.textdirec{position: absolute; right: 0%;top: 80%;}
+.darkmode{z-index: 33; transition: all 1s ; cursor: pointer; box-shadow: 2px 2px 20px #414141;position: fixed;bottom: 2%; right: 1%; width: 45px; height: 45px; border-radius: 50%;display: flex;justify-content: center;align-items: center;}
+.darkmode:hover {color: #0584a3;border: 1px solid #0584a3;}
+.darkpanal{position: fixed; box-shadow: 2px 2px 20px #414141;border-radius: 10px;bottom: 12%;right: 2.2%;z-index: 22;}
+.darkpanal::before
+{
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 7%;;
+    bottom: -5%;
+    background-color: #242526;
+    transform: rotate(45deg);
+}
